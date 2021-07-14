@@ -1,0 +1,163 @@
+#side-menu {
+    background-color: var(--main-color-blue);
+    left: 0;
+    top: 0;
+    height: auto;
+    min-height: 100vh;
+}
+
+#menu {
+    background-color: #fff;
+    height: 50px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+}
+
+#section-menu {
+    width: 210px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+}
+
+img.logo-menu {
+    height: 50px;
+}
+
+button#btn-toogle-menu {
+    background: unset;
+    border: unset;
+    font-size: 25px;
+}
+
+button#btn-toogle-menu:hover {
+    cursor: pointer;
+}
+
+#side-menu.show-left {
+    z-index: 99;
+}
+
+.menu-item {
+    margin: 15px 0;
+}
+
+.show-left .menu-item a {
+    padding-left: 50px;
+}
+
+.hide-left .menu-item a {
+    text-align: center;
+}
+
+.menu-item a:hover {
+    background-color: #fff;
+    color: var(--main-color-blue);
+    cursor: pointer;
+}
+
+.menu-item a {
+    text-decoration: unset;
+    color: #fff;
+    width: 100%;
+    margin: 10px 0;
+    box-sizing: border-box;
+    font-weight: bold;
+    display: flex;
+    font-size: 20px;
+}
+
+.show-left .menu-item {
+    position: relative;
+    width: inherit;
+    color: #fff;
+    box-sizing: border-box;
+    min-width: 0;
+    margin: 15px 0px;
+    display: list-item;
+}
+
+p.link-text {
+    line-height: 20px;
+    margin: auto 0;
+}
+
+p.link-icon.home:before {
+    content: "\f015";
+}
+
+p.link-icon.list-cv:before {
+    content: "\f0c0";
+}
+
+p.link-icon.create-cv:before {
+    content: "\f234";
+}
+
+p.link-icon {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.hide-left .menu-item .link-text {
+    display: none;
+    padding: 0;
+}
+
+.show-left .menu-item .link-text {
+    display: block;
+}
+
+@media only screen and (min-width: 768px) {
+    /* For Desktop: */
+    #side-menu.show-left {
+        transition: 0.5s;
+        width: 300px;
+    }
+
+    #side-menu.hide-left {
+        width: 50px;
+        transition: 0.5s;
+    }
+
+    p.link-icon {
+        min-width: 50px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #side-menu.show-left {
+        width: 90%;
+        transition: 1s;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100vh;
+    }
+
+    #side-menu.hide-left {
+        width: 0;
+        transition: 1s;
+    }
+
+    section#body-container{
+        overflow: initial;
+    }
+
+    .show-left .menu-item {
+        width: initial;
+    }
+
+    .hide-left p.link-icon {
+        display: none;
+    }
+
+    .show-left p.link-icon {
+        display: block;
+        margin: 5px 20px;
+    }
+}

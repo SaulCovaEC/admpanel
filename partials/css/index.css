@@ -1,0 +1,303 @@
+:root {
+    --main-color-green: #7EB043;
+    --main-color-yellow: #e6bb32;
+    --main-color-blue: #005ab4;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(235, 235, 235);
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+section#body-container {
+    display: flex;
+}
+
+section#body-container {
+    display: flex;
+    top: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+div#main-container {
+    display: flex;
+    width: 100%;
+}
+
+div.main-panel {
+    margin: 30px;
+    padding: 25px;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+}
+
+table.table-cv {
+    padding: 0;
+    border: 1px solid;
+    width: 100%;
+    border-spacing: 0;
+}
+
+table.table-cv thead {
+    background-color: var(--main-color-blue);
+    color: #fff;
+}
+
+table.table-cv .table-icon-cell {
+    text-align: center;
+}
+
+table.table-cv .table-icon-cell:hover {
+    cursor: pointer;
+    color: var(--main-color-green);
+}
+
+table.table-cv th, table.table-cv td {
+    border: 1px solid rgb(140, 140, 140);
+    padding: 10px;
+}
+
+table.table-cv .table-icon-cell[data-status='true'] {
+    color: #cacaca;
+    cursor: default;
+    pointer-events: none;
+}
+
+/*---- Forms ----*/
+
+.title-section p {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-style: italic;
+}
+
+.form-group {
+    display: inline-grid;
+    margin: auto;
+    justify-self: center;
+    padding: 10px 15px;
+}
+
+.form-group {
+    display: inline-grid;
+    margin: auto;
+    justify-self: center;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+
+
+.form-group input, .form-group textarea, .form-group select {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border-width: 2px;
+    border-color: darkgray;
+    background-color: rgb(210 210 210 / 15%);
+    color: #000;
+}
+
+
+.btn:hover {
+    color: var(--main-color-blue);
+    background-color: #fff;
+    border-color: var(--main-color-blue);
+    cursor: pointer;
+}
+
+.btn {
+    width: fit-content;
+    padding: 10px 20px;
+    font-weight: bold;
+    background-color: var(--main-color-blue);
+    color: #fff;
+    border-radius: 10px;
+    border-color: #fff;
+}
+
+.form-group label {
+    margin-bottom: 7px;
+    font-weight: bolder;
+}
+
+input::placeholder, textarea::placeholder {
+    padding: 5px 10px;
+}
+
+.form-group section {
+    border: 1px solid #c3c3c3;
+    display: grid;
+}
+.section-title {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.section-title .title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+
+.btn-delete-element {
+    border: unset;
+    background: unset;
+    font-size: 20px;
+    float: right;
+    margin: 10px;
+}
+
+.btn-delete-element:hover {
+    cursor: pointer;
+    color: var(--main-color-green);
+}
+
+/*---- Columnas----*/
+.col-1-1 {
+    width: 100%;
+}
+.col-2-3 {
+    width: 66%;
+}
+.col-1-3 {
+    width: 32.5%;
+}
+.col-1-2 {
+    width: 49%;
+}
+.col-1-4 {
+    width: 24%;
+}
+
+/*---- Elements ----*/
+section#modal-background {
+    position: fixed;
+    background-color: rgba(0,0,0,0.7);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    overflow: hidden;
+}
+
+div#modal-loading {
+    font-size: 5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-name: changeColor;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+div#modal-content {
+    min-width: 45%;
+    min-height: 200px;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+div#modal-header #close-modal {
+    height: initial;
+    width: 30px;
+}
+
+div#modal-header #close-modal:hover {
+    cursor: pointer;
+}
+
+div#modal-header #close-modal svg {
+    font-size: 20px;
+    background-color: unset;
+    margin: auto;
+    width: 15px;
+    height: initial;
+    padding: 20px 10px;
+}
+
+div#modal-body {
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 25px;
+}
+
+.icon-status {
+    font-size: 5em;
+}
+
+.status-success .icon-status {
+    color: var(--main-color-green);
+}
+
+.status-error .icon-status {
+    color: var(--main-color-green);
+}
+
+.text-status button {
+    background-color: var(--main-color-blue);
+    color: #fff;
+    border-radius: 7px;
+    padding: 5px 15px;
+    font-weight: bold;
+    border: 1px solid var(--main-color-blue);
+}
+
+.text-status button:hover {
+    color: var(--main-color-blue);
+    background-color: #fff;
+    border: 1px solid var(--main-color-blue);
+    cursor: pointer;
+}
+
+.text-status p {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+div#modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    min-height: 50px;
+    box-shadow: 1px 0px 9px 1px rgb(140 140 140);
+}
+
+#modal-backgroung.hide {
+    display: none;
+    transition: 4s;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+      width: 100%;
+    }
+}
+
+@keyframes changeColor {
+  0% {color: #fff;}
+  25%  {color: var(--main-color-blue);}
+  50%  {color: var(--main-color-green);}
+  75% {color: var(--main-color-yellow);}
+  100%  {color: #fff;}
+}
