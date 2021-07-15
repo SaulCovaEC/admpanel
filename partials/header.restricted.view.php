@@ -13,4 +13,3 @@
 </head>
 
 <body> 
-  <section id="main-container">
