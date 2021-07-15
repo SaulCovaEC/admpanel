@@ -10,19 +10,16 @@
 }
 
 body {
-  background-color: var(--main-color-blue);
   margin: 0;
 }
 
-section#background-icon {
+#login-page {
   width: 100%;
   height: 100vh;
   position: absolute;
-  background-image: url('../img/maos.png');
+  background-image: url('../img/sede.png');
   background-repeat: no-repeat;
-  opacity: 0.3;
-  background-position-x: left;
-  background-position-y: bottom;
+  background-size: cover;
 }
 
 #main-container {

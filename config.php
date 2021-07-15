@@ -1,7 +1,7 @@
 <?php
 
-class constants {
+function host(){
+  $host = ($_SERVER['HTTP_HOST'] == 'localhost') ? "http://localhost/admpanel" : "https://admpanel.hermanitos.org.br/";
 
-  const LINK = 'http://localhost/admpanel';
-
+  return $host;
 }

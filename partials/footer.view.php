@@ -15,9 +15,9 @@
     </div>
   </section>
   
-  <script type="text/javascript" src="<?php echo constants::LINK;?>/partials/js/all.min.js"></script>
-  <script type="text/javascript" src="<?php echo constants::LINK;?>/partials/js/menu.js"></script>
-  <script type="text/javascript" src="<?php echo constants::LINK;?>/partials/js/index.js"></script>
+  <script type="text/javascript" src="<?php echo host();?>/partials/js/all.min.js"></script>
+  <script type="text/javascript" src="<?php echo host();?>/partials/js/menu.js"></script>
+  <script type="text/javascript" src="<?php echo host();?>/partials/js/index.js"></script>
 
   </body>  
 </html>
