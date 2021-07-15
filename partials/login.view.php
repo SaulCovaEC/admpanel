@@ -6,6 +6,6 @@
     <input type="password" name="password" id="password" placeholder="Contraseña"/>
   </div>
   <div class="form-group">
-    <button type="submit">INGRESAR</button>
+    <button type="submit" id="btn-submit" class="btn">INGRESAR</button>
   </div>
 </form>
