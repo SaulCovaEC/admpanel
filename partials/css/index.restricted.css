@@ -6,9 +6,7 @@
 
 @font-face {
   font-family: "Poppins";
-  src: url("./webfonts/Poppins-Regular.ttf");
-  font-family: "Poppins Black";
-  src: url("./webfonts/Poppins-Black.ttf");
+  src: local("./webfonts/Poppins-Regular.ttf");
 }
 
 body {
