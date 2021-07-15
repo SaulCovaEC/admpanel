@@ -1,11 +1,11 @@
 <form action="">
-  <div class="from-group">
-    <input type="text" name="user" id="user"/>
+  <div class="form-group">
+    <input type="text" name="user" id="user" placeholder="Usuario"/>
   </div>
-  <div class="from-group">
-    <input type="password" name="password" id="password"/>
+  <div class="form-group">
+    <input type="password" name="password" id="password" placeholder="Contraseña"/>
   </div>
-  <div class="from-group">
+  <div class="form-group">
     <button type="submit">INGRESAR</button>
   </div>
 </form>

@@ -3,3 +3,25 @@
   --main-color-yellow: #e6bb32;
   --main-color-blue: #005ab4;
 }
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./webfonts/Poppins-Regular.ttf");
+  font-family: "Poppins Black";
+  src: url("./webfonts/Poppins-Black.ttf");
+}
+
+body {
+  background-color: var(--main-color-blue);
+}
+
+section#main-container {
+  background-color: #fff;
+  width: fit-content;
+  padding: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 15px;
+}
