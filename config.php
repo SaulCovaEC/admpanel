@@ -2,6 +2,6 @@
 
 class constants {
 
-  const LINK = 'http://localhost/admpanel';
+  const LINK = 'https://admpanel.hermanitos.org.br/';
 
 }
