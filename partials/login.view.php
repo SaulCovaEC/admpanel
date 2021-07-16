@@ -1,8 +1,9 @@
 <section id="login-page">
   <div id="main-container">
     <div id="side-icon">
+      <img src="partials/img/logo.png" alt="Hermanitos">
     </div>
-    <div>
+    <div id="side-form">
       <form action="">
         <div class="form-group">
           <input type="text" name="user" id="user" placeholder="Usuario"/>
