@@ -2,7 +2,7 @@
   /*----- Variables -----*/
   let formLogin = d.getElementById("login-form");
   let user = d.getElementById("user");
-  let pass = d.getElementById("pass");
+  let pass = d.getElementById("password");
 
   function login() {
     let formData = new FormData();
