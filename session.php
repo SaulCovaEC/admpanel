@@ -2,26 +2,13 @@
 
 $ch = curl_init();
 
-curl_setopt_array($ch, [
+$mail = "saulcova.ec@gmail.com";
+$pass = "Sllax20.13";
+$url = "https://api.hermanitos.org.br/session-login?mail=$mail&pass=$pass";
 
-    CURLOPT_URL => 'https://api.hermanitos.org.br/session-login',
-
-    CURLOPT_POST => true,
-
-    CURLOPT_HTTPHEADER => [
-        'Authorization: Bearer ' . $token,
-        'Content-Type: application/json',
-        'x-li-format: json'
-    ],
-
-    CURLOPT_POSTFIELDS => json_encode([
-        'mail' => 'saulcova.ec@gmail.com',
-        'pass' => 'Sllax20.13'
-    ]),
-
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_PROTOCOLS => CURLPROTO_HTTPS
-]);
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_HEADER, false);
 
 $resultado = curl_exec($ch);
 curl_close($ch);
