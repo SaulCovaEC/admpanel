@@ -11,9 +11,8 @@ function checkUser($mail, $pass) {
         
     array_push($result, $userReturn);
 
-    echo json_encode($result[0]);
+    return json_encode($result[0]);
 }
-
 
 if($_POST) {
     checkUser($_POST["email"], $_POST["pass"]);
