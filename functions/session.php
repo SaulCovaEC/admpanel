@@ -17,7 +17,7 @@ function checkUser($mail, $pass) {
         $_SESSION['name'] = $userResult['name'];
     }
 
-    echo json_encode($result[0]);
+    return $result[0];
 }
 
 
