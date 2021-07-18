@@ -1,8 +1,6 @@
 <?php
 require_once 'dbcnfg.php';
 
-header("Access-Control-Allow-Origin: *");
-
 function checkUser($mail, $pass) {
     $result = array();
     $userSql = "SELECT id_user, name FROM users WHERE email = '$mail' AND pass = '$pass' LIMIT 1";
@@ -19,7 +17,7 @@ function checkUser($mail, $pass) {
 
 
 if($_POST) {
-    checkUser($_POST["mail"], $_POST["pass"]);
+    checkUser($_POST["email"], $_POST["pass"]);
 } else if($_GET) {
-    checkUser($_GET["mail"], $_GET["pass"]);
+    checkUser($_GET["email"], $_GET["pass"]);
 }
