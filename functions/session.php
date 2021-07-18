@@ -12,7 +12,7 @@ function checkUser($mail, $pass) {
         
     array_push($result, $userReturn);
 
-    if($result) {
+    if($userReturn) {
         $_SESSION['id_user'] = $userResult['id_user'];
         $_SESSION['name'] = $userResult['name'];
     }
