@@ -4,7 +4,7 @@
       <img src="partials/img/logo.png" alt="Hermanitos">
     </div>
     <div id="side-form">
-      <form action="">
+      <form action="" id="login-form">
         <div class="form-group">
           <input type="text" name="user" id="user" placeholder="Usuario"/>
         </div>
