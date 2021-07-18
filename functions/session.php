@@ -1,5 +1,5 @@
 <?php
-require_once 'dbcnfg.php';
+//require_once 'dbcnfg.php';
 
 function checkUser($mail, $pass) {
     $result = array();
