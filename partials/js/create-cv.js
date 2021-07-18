@@ -315,7 +315,7 @@ function nuevoCv() {
     modalLoading.setAttribute("class", '');
       
     /*=== Send Data ===*/
-    fetch("http://api.irmaozinhos.com.br/create-cv.php", {
+    fetch("https://api.hermanitos.org.br/create-cv.php", {
         method: "POST",
         body: formData
     })

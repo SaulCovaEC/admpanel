@@ -75,3 +75,8 @@ body {
     padding: 5px 10px;
     color: #000;
 }
+
+#btn-submit:hover {
+  cursor: pointer;
+  background-color: var(--main-color-green);
+}

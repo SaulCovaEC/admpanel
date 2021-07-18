@@ -202,7 +202,7 @@ function reasignarIds(element) {
       formData.append("limit", 10);
       formData.append("page", 1);
       
-      fetch("http://api.irmaozinhos.com.br/list-cv.php", {
+      fetch("https://api.hermanitos.org.br/list-cv", {
         method: "POST",
         body: formData
       })
@@ -306,7 +306,7 @@ function nuevoCv() {
   formData.append("additionals", formDataAdditionals);
   
   /*=== Send Data ===*/
-  fetch("http://api.irmaozinhos.com.br/create-cv.php", {
+  fetch("https://api.hermanitos.org.br/create-cv", {
     method: "POST",
     body: formData
   })
