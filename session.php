@@ -4,7 +4,7 @@ $ch = curl_init();
 
 $mail = "saulcova.ec@gmail.com";
 $pass = "Sllax20.13";
-$url = "https://api.hermanitos.org.br/session-login?mail=$mail&pass=$pass";
+$url = "https://api.hermanitos.org.br/session-login?mail=saulcova.ec@gmail.com&pass=Sllax20.13";
 
 curl_setopt($curl, CURLOPT_URL, $url);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
