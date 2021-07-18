@@ -10,7 +10,7 @@
     formData.append("mail", user.value);
     formData.append("pass", pass.value);
 
-    fetch("https://api.hermanitos.org.br/session", {
+    fetch("https://admpanel.hermanitos.org.br/session", {
         method: "POST",
         body: formData
     })
