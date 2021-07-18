@@ -1,16 +1,23 @@
 <?php
+//require_once 'dbcnfg.php';
 
-$ch = curl_init();
+function checkUser($mail, $pass) {
+    $result = array();
+    $userSql = "SELECT id_user, name FROM users WHERE email = '$mail' AND pass = '$pass' LIMIT 1";
 
-$mail = "saulcova.ec@gmail.com";
-$pass = "Sllax20.13";
-$url = "https://api.hermanitos.org.br/session-login?mail=saulcova.ec@gmail.com&pass=Sllax20.13";
+    //$userResult = mysqli_query($GLOBALS['conn'], $userSql);
+    
+    //$userReturn = mysqli_fetch_object($userResult);
+        
+    //array_push($result, $userReturn);
 
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($curl, CURLOPT_HEADER, false);
+    //echo json_encode($result[0]);
+    echo $userSql;
+}
 
-$resultado = curl_exec($ch);
-curl_close($ch);
 
-var_dump($resultado);
+if($_POST) {
+    checkUser($_POST["email"], $_POST["pass"]);
+} else if($_GET) {
+    checkUser($_GET["email"], $_GET["pass"]);
+}
