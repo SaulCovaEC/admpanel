@@ -7,10 +7,10 @@
   function login() {
     let formData = new FormData();
 
-    formData.append("mail", user.value);
+    formData.append("email", user.value);
     formData.append("pass", pass.value);
 
-    fetch("https://admpanel.hermanitos.org.br/session", {
+    fetch("https://admpanel.hermanitos.org.br/functions/session", {
         method: "POST",
         body: formData
     })
