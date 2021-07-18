@@ -23,5 +23,7 @@ curl_setopt_array($ch, [
     CURLOPT_PROTOCOLS => CURLPROTO_HTTPS
 ]);
 
-echo $resultado = curl_exec($ch);
+$resultado = curl_exec($ch);
 curl_close($ch);
+
+var_dump($resultado);
