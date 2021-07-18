@@ -307,10 +307,6 @@ function nuevoCv() {
   
     formData.append("additionals", formDataAdditionals);
     
-    for (var value of formData.values()) {
-       console.log(value);
-    }
-  
     openModal();
     modalLoading.setAttribute("class", '');
       
