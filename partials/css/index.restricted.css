@@ -14,6 +14,16 @@ body {
 }
 
 #login-page {
+  background-image: url(/partials/img/sede.png);
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#login-page:before {
+  content: "";
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 90, 180, 0.5);
@@ -22,16 +32,6 @@ body {
   top: 0;
   left: 0;
   margin: 0;
-}
-
-#login-page:before {
-  content: "";
-  background-image: url(/partials/img/sede.png);
-  width: 100%;
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 #main-container {
@@ -69,8 +69,8 @@ body {
 }
 
 .form-group input {
-  border: unset;
-  background-color: #ececec;
-  padding: 5px 10px;
-  color: #000;
+    border: unset;
+    background-color: #ececec;
+    padding: 5px 10px;
+    color: #000;
 }
