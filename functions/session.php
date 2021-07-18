@@ -12,11 +12,6 @@ function checkUser($mail, $pass) {
         
     array_push($result, $userReturn);
 
-    if($result != null) {
-        $_SESSION['id_user'] = $userResult['id_user'];
-        $_SESSION['name'] = $userResult['name'];
-    }
-
     echo json_encode($result[0]);
 }
 
