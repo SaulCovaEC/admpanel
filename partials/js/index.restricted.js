@@ -17,7 +17,7 @@
     .then(response => response.json())
     .catch(error => console.log('Error: ', error))
     .then(function(response){
-        c(response);
+      c(response);
     });
   }
 
