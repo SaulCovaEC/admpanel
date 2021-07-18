@@ -2,7 +2,7 @@
 require_once './functions/session.php';
 session_start();
 
-if(isset($_SESSION['user'])){
+if(!isset($_SESSION['user'])){
   checkUser('saulcova.ec@gmail.com', 'Sllax20.13');
 }
 
