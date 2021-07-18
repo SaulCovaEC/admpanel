@@ -2,6 +2,8 @@
 session_start();
 require_once 'dbcnfg.php';
 
+header("Access-Control-Allow-Origin: *");
+
 function checkUser($mail, $pass) {
     $result = array();
     $userSql = "SELECT id_user, name FROM users WHERE email = '$mail' AND pass = '$pass' LIMIT 1";
