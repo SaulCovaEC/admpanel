@@ -1,6 +1,6 @@
 <?php
-require_once 'dbcnfg.php';
 session_start();
+require_once 'dbcnfg.php';
 
 function checkUser($mail, $pass) {
     $result = array();
@@ -12,12 +12,12 @@ function checkUser($mail, $pass) {
         
     array_push($result, $userReturn);
 
-    if($userReturn) {
+    if($result != null) {
         $_SESSION['id_user'] = $userResult['id_user'];
         $_SESSION['name'] = $userResult['name'];
     }
 
-    return $result[0];
+    echo json_encode($result[0]);
 }
 
 
