@@ -10,7 +10,7 @@
     formData.append("email", user.value);
     formData.append("pass", pass.value);
 
-    fetch("http://localhost/admpanel/functions/session.php", {
+    fetch("https://admpanel.hermanitos.org.br/functions/session.php", {
         method: "POST",
         body: formData
     })

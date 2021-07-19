@@ -221,7 +221,7 @@ function reasignarIds(element) {
       formData.append("limit", 10);
       formData.append("page", 1);
       
-      fetch("https://api.hermanitos.org.br/list-cv", {
+      fetch("https://admpanel.hermanitos.org.br/functions/list-cv", {
         method: "POST",
         body: formData
       })
@@ -242,7 +242,7 @@ function reasignarIds(element) {
     formData.append("limit", 10);
     formData.append("page", 1);
     
-    fetch("http://localhost/admpanel/functions/filter-cv", {
+    fetch("https://admpanel.hermanitos.org.br/functions/filter-cv", {
       method: "POST",
       body: formData
     })

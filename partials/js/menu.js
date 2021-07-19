@@ -17,7 +17,7 @@
 
     logout.addEventListener("click", function(event){
         event.preventDefault(); 
-        fetch("http://localhost/admpanel/functions/logout.php")
+        fetch("https://admpanel.hermanitos.org.br/functions/logout.php")
         .then(response => response.json())
         .catch(error => console.log('Error: ', error))
         .then(function(response){

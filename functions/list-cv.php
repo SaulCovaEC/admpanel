@@ -3,7 +3,7 @@ require_once 'dbcnfg.php';
 
 header("Access-Control-Allow-Origin: *");
 
-function allCv($name, $limit = 10, $page = 1) {
+function allCv($limit = 10, $page = 1) {
     $offset = ($page == 1) ? 0 : ($page*10)-1;
     $result = array();
     $personSql = "SELECT * FROM person LIMIT $limit OFFSET $offset";
