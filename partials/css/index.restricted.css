@@ -14,7 +14,7 @@ body {
 }
 
 #login-page {
-  background-image: url(/partials/img/sede.png);
+  background-image: url(../img/sede.png);
   width: 100%;
   height: 100vh;
   background-position: center;

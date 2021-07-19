@@ -4,13 +4,13 @@
   let modal = d.getElementById("modal-background");
   let dayInput = d.getElementById("day");
   let yearInput = d.getElementById("year");
-  let tableIconBtn = d.getElementsByClassName("table-icon-cell");
   let deleteElement = d.getElementsByClassName("delete-elem");
   let addStudyBtn = d.getElementById("add-study");
   let addCourseBtn = d.getElementById("add-course");
   let addExperienceBtn = d.getElementById("add-experience");
   let addAdditionalBtn = d.getElementById("add-additional");
   let tableBody = d.getElementById("table-data");
+  let sName = d.getElementById("s-name");
     
   /*----- Templates -----*/
   function addStudy(id) {
@@ -130,7 +130,7 @@
   }
 
   function templateCvItem(data) {
-      return `<tr id="${data.id_person}">
+      return `<tr id="${data.id_person}" data-name="${data.name}">
         <td>${data.name}</td>
         <td>${data.email}</td>
         <td>${data.telephone}</td>
@@ -139,6 +139,7 @@
         <td class="table-icon-cell" data-ref="professional" data-status="${(data.experiences.length <= 0) ? 'true' : 'false'}"><i class="fas fa-suitcase"></i></td>
         <td class="table-icon-cell" data-ref="additional" data-status="${(data.additionals.length <= 0) ? 'true' : 'false'}"><i class="far fa-list-alt"></i></td>
         <td class="table-icon-cell" data-ref="edit" data-status="false"><i class="fas fa-user-edit"></i></td>
+        <td class="table-icon-cell" data-ref="download" data-status="false"><i class="fas fa-file-download"></i></td>
       </tr>`;
   }
   
@@ -165,6 +166,24 @@ function addListener(element) {
       }
       reasignarIds(element);
     })
+  }
+}
+
+function addTableListener() {
+  let tableIconBtn = d.getElementsByClassName("table-icon-cell");
+
+  for (let i = 0; i < tableIconBtn.length; i++) {
+    tableIconBtn[i].addEventListener("click", function(event){
+      let thisElement = tableIconBtn[i];
+      let opIcon = thisElement.getAttribute("data-ref");
+      let idIcon = thisElement.parentElement.getAttribute("id");
+
+      if(opIcon == "download") {
+        let name = thisElement.parentElement.getAttribute("data-name");
+        downloadCv(idIcon, name);
+      }
+      c(idIcon);
+    });
   }
 }
 
@@ -213,8 +232,49 @@ function reasignarIds(element) {
               let templateNew = templateCvItem(value);
               tableBody.insertAdjacentHTML("beforebegin", templateNew);
           })
-          c(response);
+          addTableListener();
       });
+  }
+
+  function filterCv(name) {
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("limit", 10);
+    formData.append("page", 1);
+    
+    fetch("http://localhost/admpanel/functions/filter-cv", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.json())
+    .catch(error => console.log('Error: ', error))
+    .then(function(response){
+        Object.entries(response).forEach(([key, value]) => {
+            let templateNew = templateCvItem(value);
+            tableBody.insertAdjacentHTML("beforebegin", templateNew);
+        })
+        addTableListener();
+    });
+  }
+
+  function downloadCv(idUser, name) {
+    let formData = new FormData();
+      
+    formData.append("id", idUser);
+    fetch("https://api.hermanitos.org.br/get-cv", {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.blob())
+    .then(blob => {
+      let url = window.URL.createObjectURL(blob);
+      let a = document.createElement('a');
+        a.href = url;
+        a.download = name+".pdf";
+        document.body.appendChild(a);
+        a.click();    
+        a.remove();    
+    });
   }
 
 function nuevoCv() {
@@ -342,15 +402,7 @@ function closeModal() {
       }
   }
 
-if(tableIconBtn){
-  for (let i = 0; i < tableIconBtn.length; i++) {
-    tableIconBtn[i].addEventListener("click", function(event){
-      if(this.getAttribute("disabled") === "false"){
-        openModal();
-      } 
-    });
-  }
-}
+
 
 if(addStudyBtn){
   addStudyBtn.addEventListener("click", function(event){
@@ -386,6 +438,12 @@ if(addAdditionalBtn){
     this.insertAdjacentHTML("beforebegin", templateNew);
     addListener("additional");
   })
+}
+
+if(sName){
+  sName.addEventListener("input", function(event){
+    filterCv();
+  });
 }
 
 if(sendCv){

@@ -4,5 +4,10 @@
     <button id="btn-toogle-menu">
       <i class="fas fa-bars"></i>
     </button>
-  </div> 
+  </div>
+  <div id="section-user">
+    <button id="btn-logout">
+      <i class="fas fa-sign-out-alt"></i>
+    </button>
+  </div>
 </section>

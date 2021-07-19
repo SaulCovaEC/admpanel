@@ -1,8 +1,15 @@
 <?php
-$host = 'localhost';
-$dbname = 'u308122992_hrmnts1';
-$username = 'u308122992_usrrtdb';
-$password = 'ADbd1Hrmnts';
+if ($_SERVER['HTTP_HOST'] == 'localhost') {
+  $host = 'localhost';
+  $dbname = 'hermanitos';
+  $username = 'saulcova';
+  $password = 'Sllax20.13';
+} else {
+  $host = 'localhost';
+  $dbname = 'u308122992_hrmnts1';
+  $username = 'u308122992_usrrtdb';
+  $password = 'ADbd1Hrmnts';
+}
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
 

@@ -164,6 +164,17 @@ input::placeholder, textarea::placeholder {
     color: var(--main-color-green);
 }
 
+#list-cv-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    align-content: center;
+}
+
+.filter-group {
+    display: inline-grid;
+}
+
 /*---- Columnas----*/
 .col-1-1 {
     width: 100%;
