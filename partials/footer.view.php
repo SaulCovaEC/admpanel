@@ -16,8 +16,8 @@
   </section>
   
   <script type="text/javascript" src="<?php echo host();?>/partials/js/all.min.js"></script>
-  <script type="text/javascript" src="<?php echo host();?>/partials/js/menu.js"></script>
-  <script type="text/javascript" src="<?php echo host();?>/partials/js/index.js"></script>
+  <script type="module" src="<?php echo host();?>/partials/js/menu.js"></script>
+  <script type="module" src="<?php echo host();?>/partials/js/index.js"></script>
 
   </body>  
 </html>

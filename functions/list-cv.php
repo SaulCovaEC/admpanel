@@ -4,8 +4,10 @@ require_once 'dbcnfg.php';
 header("Access-Control-Allow-Origin: *");
 
 function allCv($limit = 10, $page = 1) {
-    $offset = ($page == 1) ? 0 : ($page*10)-1;
+    $offset = ($page == 1) ? 0 : (($page*10)-10);
     $result = array();
+    $returnResult = array();
+
     $personSql = "SELECT * FROM person LIMIT $limit OFFSET $offset";
 
     $personResult = mysqli_query($GLOBALS['conn'], $personSql);
@@ -47,10 +49,20 @@ function allCv($limit = 10, $page = 1) {
         array_push($result, $person);
     }
 
-    echo json_encode($result);
+    $numPages = array();
+    $pages = "SELECT id_person FROM person";
+    $nPages = mysqli_query($GLOBALS['conn'], $pages);
+    $nResults = mysqli_num_rows($nPages);
+    $pResult = ceil($nResults/10);
+    
+    echo json_encode(array($pResult, $result));
+
+    //echo $personSql;
 }
 
 
 if($_POST) {
     allCv($_POST["limit"], $_POST["page"]);
+} else {
+    allCv(10,2);
 }

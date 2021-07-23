@@ -75,6 +75,39 @@ table.table-cv .table-icon-cell[data-status='true'] {
     pointer-events: none;
 }
 
+div#pages {
+    margin: 15px 0px;
+    float: right;
+}
+
+button.page-btn.disabled {
+    pointer-events: none;
+    color: #ffffff;
+    background: #dcdcdc;
+    border: unset;
+}
+
+button.page-btn.active {
+    pointer-events: none;
+    background-color: var(--main-color-blue);
+    color: #fff;
+    border: unset;
+}
+
+button.page-btn:hover {
+    cursor: pointer;
+    background-color: var(--main-color-blue);
+    color: #fff;
+}
+
+button.page-btn {
+    padding: 5px 10px;
+    margin: 0px 5px;
+    font-weight: bold;
+    color: var(--main-color-blue);
+    border: unset;
+}
+
 /*---- Forms ----*/
 
 .title-section p {
@@ -261,7 +294,28 @@ div#modal-body {
 }
 
 .status-error .icon-status {
-    color: var(--main-color-green);
+    color: red;
+}
+
+div#modal-footer button:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--main-color-blue);
+}
+div#modal-footer button {
+    background: #fff;
+    border: 4px solid var(--main-color-blue);
+    margin: 0 10px;
+    color: var(--main-color-blue);
+    padding: 8px 15px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+div#modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
 }
 
 .text-status button {

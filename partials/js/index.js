@@ -1,3 +1,5 @@
+import { api as api } from './variables.js';
+
 ((d, c) => {
   /*----- Variables -----*/
   let sendCv = d.getElementById("send-cv");
@@ -11,6 +13,9 @@
   let addAdditionalBtn = d.getElementById("add-additional");
   let tableBody = d.getElementById("table-data");
   let sName = d.getElementById("s-name");
+  let pages = d.getElementById("pages");
+  let modalContent = d.getElementById("modal-body");
+  let modalFooter = d.getElementById("modal-footer");
     
   /*----- Templates -----*/
   function addStudy(id) {
@@ -142,98 +147,178 @@
         <td class="table-icon-cell" data-ref="download" data-status="false"><i class="fas fa-file-download"></i></td>
       </tr>`;
   }
-  
-    function dayOption(numb) {
-        return `<option value="${numb}">${numb}</option>`;
-    }
 
-    function yearOption(numb) {
-        return `<option value="${numb}">${numb}</option>`;
-    }
-  
-/*----- Functions -----*/
-
-
-function addListener(element) {
-  let deleteElement = d.getElementsByClassName("delete-"+element);
-  for (let i = 0; i < deleteElement.length; i++) {
-    deleteElement[i].addEventListener("click", function(event){
-      event.preventDefault();
-      let elementId = this.getAttribute("data-element");
-      let parentElement = this.parentElement.parentElement;
-      if(parentElement) {
-        parentElement.remove(element);
+  function templatePages(current, all) {
+    let template = `<div id="pages" data-current="${current}">
+      <button class="page-btn${(current == 1) ? " disabled" : ""}" id="prev-page" data-page="${parseInt(current)-1}"><i class="fas fa-chevron-left"></i></button>`
+      
+      for(let i = 0; i < all; i++) {
+        template += `<button class="page-btn${(current == (i+1)) ? " active" : ""}" data-page="${i+1}">${i+1}</button>`;
       }
-      reasignarIds(element);
-    })
+  
+    template += `<button class="page-btn${(current == all) ? " disabled" : ""}" id="next-page" data-page="${parseInt(current)+1}"><i class="fas fa-chevron-right"></i></button>
+    </div>`;
+
+    return template;
   }
-}
 
-function addTableListener() {
-  let tableIconBtn = d.getElementsByClassName("table-icon-cell");
-
-  for (let i = 0; i < tableIconBtn.length; i++) {
-    tableIconBtn[i].addEventListener("click", function(event){
-      let thisElement = tableIconBtn[i];
-      let opIcon = thisElement.getAttribute("data-ref");
-      let idIcon = thisElement.parentElement.getAttribute("id");
-
-      if(opIcon == "download") {
-        let name = thisElement.parentElement.getAttribute("data-name");
-        downloadCv(idIcon, name);
-      }
-      c(idIcon);
-    });
+  function dayOption(numb) {
+    return `<option value="${numb}">${numb}</option>`;
   }
-}
 
-function reasignarIds(element) {
-  let deleteElement = d.getElementsByClassName("delete-"+element);
-  for (let i = 0; i < deleteElement.length; i++) {
-    let newId = i+1;
-    let thisElement = deleteElement[i];
-    thisElement.setAttribute("data-element", newId);
-    thisElement.parentElement.parentElement.setAttribute("id", element+"-"+newId);
-    thisElement.parentElement.parentElement.setAttribute("data-id", newId);
-    let titleSection = "";
-    if(element === 'study') {
-        titleSection = "Formacion";
-    } else if(element === "course") {
-        titleSection = "Curso";
-    } else if (element === "experience") {
-        titleSection = "Experiencia laboral";
-    } else if (element === "additional") {
-        titleSection = "Informacion adicional";
-    }
+  function yearOption(numb) {
+    return `<option value="${numb}">${numb}</option>`;
+  }
     
-    thisElement.previousElementSibling.innerText = titleSection+" "+newId;
+  /*----- Functions -----*/
+  function addListener(element) {
+    let deleteElement = d.getElementsByClassName("delete-"+element);
+    for (let i = 0; i < deleteElement.length; i++) {
+      deleteElement[i].addEventListener("click", function(event){
+        event.preventDefault();
+        let elementId = this.getAttribute("data-element");
+        let parentElement = this.parentElement.parentElement;
+        if(parentElement) {
+          parentElement.remove(element);
+        }
+        reasignarIds(element);
+      })
+    }
   }
-}
+
+  function addTableListener() {
+    let tableIconBtn = d.getElementsByClassName("table-icon-cell");
+
+    for (let i = 0; i < tableIconBtn.length; i++) {
+      tableIconBtn[i].addEventListener("click", function(event){
+        let thisElement = tableIconBtn[i];
+        let opIcon = thisElement.getAttribute("data-ref");
+        let idIcon = thisElement.parentElement.getAttribute("id");
+
+        if(opIcon == "download") {
+          let name = thisElement.parentElement.getAttribute("data-name");
+          downloadCv(idIcon, name);
+        }
+      });
+    }
+  }
+
+  function reasignarIds(element) {
+    let deleteElement = d.getElementsByClassName("delete-"+element);
+    for (let i = 0; i < deleteElement.length; i++) {
+      let newId = i+1;
+      let thisElement = deleteElement[i];
+      thisElement.setAttribute("data-element", newId);
+      thisElement.parentElement.parentElement.setAttribute("id", element+"-"+newId);
+      thisElement.parentElement.parentElement.setAttribute("data-id", newId);
+      let titleSection = "";
+      if(element === 'study') {
+          titleSection = "Formacion";
+      } else if(element === "course") {
+          titleSection = "Curso";
+      } else if (element === "experience") {
+          titleSection = "Experiencia laboral";
+      } else if (element === "additional") {
+          titleSection = "Informacion adicional";
+      }
+      
+      thisElement.previousElementSibling.innerText = titleSection+" "+newId;
+    }
+  }
+
+  function addListenerPage() {
+    let pageBtns = d.getElementsByClassName("page-btn");
+
+    for(let i = 0; i < pageBtns.length; i++) {
+      pageBtns[i].addEventListener("click", function() {
+        let page = pageBtns[i].getAttribute("data-page");
+        c(page);
+        loadPageCv(10, page);
+      })
+    }
+  }
 
   function openModal() {
       modal.setAttribute("class", "");
       closeModal();
   }
 
+  function successStatus(idUser, name) {
+    modalContent.innerHTML = `<div class="status-success">
+        <div class="icon-status">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="text-status">
+            <p>Datos guardados con exito</p>
+        </div>
+    </div>`;
+    modalFooter.innerHTML = `<div>
+      <button id="download-cv">Descargar</button>
+      <button id="back-cv">Volver</button>
+    </div>`;
+
+    d.getElementById("download-cv").addEventListener("click", function(){
+      c(idUser, name);
+      downloadCv(idUser, name);
+    });
+    d.getElementById("back-cv").addEventListener("click", function(){
+      c("volver");
+      d.getElementById("cv-form").reset();
+      modalContent.innerHTML = "";
+      modalFooter.innerHTML = ""
+      modal.setAttribute("class", "hide");
+    });
+  }
+
+  function errorStatus() {
+    modalContent.innerHTML = `<div class="status-error">
+          <div class="icon-status">
+              <i class="fas fa-minus-circle"></i>
+          </div>
+          <div class="text-status">
+              <p>Error al guardar los datos, por favor contacte con el administrador</p>
+          </div>
+      </div>`;
+      modalFooter.innerHTML = `<div>
+        <button id="back-cv">Volver</button>
+        </div>`;
+    
+        d.getElementById("back-cv").addEventListener("click", function(){
+          modalContent.innerHTML = "";
+          modalFooter.innerHTML = ""
+          modal.setAttribute("class", "hide");
+        });
+  }
+
+  function loadPageCv(limit, page) {
+    let formData = new FormData();
+    tableBody.innerHTML = "";
+      
+    formData.append("limit", limit);
+    formData.append("page", page);
+    
+    fetch(api["list-cv"], {
+      method: "POST",
+      body: formData
+    })
+    .then(response => response.json())
+    .catch(error => console.log('Error: ', error))
+    .then(function(response){
+        Object.entries(response[1]).forEach(([key, value]) => {
+            let templateNew = templateCvItem(value);
+            tableBody.insertAdjacentHTML("beforeend", templateNew);
+        })
+        c(response[1]);
+        addTableListener();
+        let pageTemplate = templatePages(page, response[0]);
+        pages.innerHTML = "";
+        pages.innerHTML = pageTemplate;
+        addListenerPage();
+    });
+  }
+
   function loadAllCv() {
-      let formData = new FormData();
-      
-      formData.append("limit", 10);
-      formData.append("page", 1);
-      
-      fetch("https://admpanel.hermanitos.org.br/functions/list-cv", {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.json())
-      .catch(error => console.log('Error: ', error))
-      .then(function(response){
-          Object.entries(response).forEach(([key, value]) => {
-              let templateNew = templateCvItem(value);
-              tableBody.insertAdjacentHTML("beforebegin", templateNew);
-          })
-          addTableListener();
-      });
+      loadPageCv(10, 1);
   }
 
   function filterCv(name) {
@@ -242,7 +327,7 @@ function reasignarIds(element) {
     formData.append("limit", 10);
     formData.append("page", 1);
     
-    fetch("https://admpanel.hermanitos.org.br/functions/filter-cv", {
+    fetch(api['filter-cv'], {
       method: "POST",
       body: formData
     })
@@ -261,7 +346,7 @@ function reasignarIds(element) {
     let formData = new FormData();
       
     formData.append("id", idUser);
-    fetch("https://api.hermanitos.org.br/get-cv", {
+    fetch(api['get-cv'], {
       method: "POST",
       body: formData
     })
@@ -362,23 +447,31 @@ function nuevoCv() {
       formDataPrev += "}";
       formDataAdditionals[index] = formDataPrev;
   }
-  
   formData.append("additionals", formDataAdditionals);
   
   /*=== Send Data ===*/
-  fetch("https://api.hermanitos.org.br/create-cv", {
+  fetch(api['create-cv'], {
     method: "POST",
     body: formData
   })
   .then(response => response.json())
   .catch(error => console.log('Error: ', error))
   .then(function(response){
-      c(response);
+    openModal();
+    c(response);
+    c(response[0]);
+    if(response[0] != 0) {
+      successStatus(response[0], d.getElementById("name").value);
+    } else {
+      errorStatus();
+    }
   });
 }
 
 function closeModal() {
   d.getElementById("close-modal").addEventListener("click", function(event){
+    modalContent.innerHTML = "";
+    modalFooter.innerHTML = ""
     modal.setAttribute("class", "hide");
   });
 }

@@ -1,3 +1,5 @@
+import { api as api } from './variables.js';
+
 ((d) => {
     let toogleSideMenu = d.getElementById("btn-toogle-menu");
     let sideMenu = d.getElementById("side-menu");
@@ -17,7 +19,7 @@
 
     logout.addEventListener("click", function(event){
         event.preventDefault(); 
-        fetch("https://admpanel.hermanitos.org.br/functions/logout.php")
+        fetch(api['logout'])
         .then(response => response.json())
         .catch(error => console.log('Error: ', error))
         .then(function(response){

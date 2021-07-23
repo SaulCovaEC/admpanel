@@ -28,4 +28,5 @@
     <tbody id="table-data">
     </tbody>
   </table>
+  <div id="pages"></div>
 <div>
