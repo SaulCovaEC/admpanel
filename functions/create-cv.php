@@ -33,10 +33,22 @@ function createPerson() {
     $telephone = $_POST["telephone"];
     $email = $_POST["email"];
     $objetive = (empty($_POST["objetive"])) ? "Inserção do mercado de trabalho" : $_POST["objetive"];
-    $sql = "INSERT INTO person (name, nationality, time_residence, gender, civil_status, adress, date_of_birth, telephone, email, objective) VALUES ('".$name."', '".$nacionality."', '".$time_residence."', '".$gender."','".$civil_status."', '".$adress."', '".$date_of_birth."', '".$telephone."', '".$email."', '".$objetive."')";
-
-    mysqli_query($GLOBALS['conn'], $sql);
-    return mysqli_insert_id($GLOBALS['conn']);
+    
+    $checkSql = "SELECT COUNT(email) FROM `person` WHERE email = '".$email."'";
+    
+    $checkResult = mysqli_query($GLOBALS['conn'], $checkSql);
+    
+    while ($countResult = mysqli_fetch_object($checkResult)) {
+        if($countResult == 0) {
+            $sql = "INSERT INTO person (name, nationality, time_residence, gender, civil_status, adress, date_of_birth, telephone, email, objective) VALUES ('".$name."', '".$nacionality."', '".$time_residence."', '".$gender."','".$civil_status."', '".$adress."', '".$date_of_birth."', '".$telephone."', '".$email."', '".$objetive."')";
+        
+            mysqli_query($GLOBALS['conn'], $sql);
+            return mysqli_insert_id($GLOBALS['conn']);
+        } else {
+            return 0;
+        }
+    }
+    
 }
 
 function createStudies($id_person, $studies) {
@@ -83,8 +95,9 @@ function createAdditionals($id_person, $additionals) {
     for($i = 0; $i < $numbAdditionals; $i++){
         $description = $additionals[$i]->description;
         
-        $sql = "INSERT INTO additional('description', 'id_person') VALUES ('$description', '$id_person')";
+        $sql = "INSERT INTO additional(description, id_person) VALUES ('$description', '$id_person')";
         mysqli_query($GLOBALS['conn'], $sql);
+        array_push($test, $sql);
     }
 }
 
@@ -93,37 +106,41 @@ if($_POST) {
     $id_person = createPerson();
     array_push($result, $id_person);
     
-    if(!empty($_POST["studies"])){
-        $studies = formatObject($_POST["studies"]);
-        $studiesResult = createStudies($id_person ,$studies);
-        array_push($result, $studiesResult);
-    } else {
-        array_push($result, null);
+    if($id_person != 0) {
+        if(!empty($_POST["studies"])){
+            $studies = formatObject($_POST["studies"]);
+            $studiesResult = createStudies($id_person ,$studies);
+            array_push($result, $studiesResult);
+        } else {
+            array_push($result, null);
+        }
+        
+        if(!empty($_POST["experiences"])){
+            $experiences = formatObject($_POST["experiences"]);
+            $experiencesResult = createExperiences($id_person ,$experiences);
+            array_push($result, $experiencesResult);
+        } else {
+            array_push($result, null);
+        }
+        
+        if(!empty($_POST["courses"])){
+            $courses = formatObject($_POST["courses"]);
+            $coursesResult = createCourses($id_person ,$courses);
+            array_push($result, $coursesResult);
+        } else {
+            array_push($result, null);
+        }
+        
+        if(!empty($_POST["additionals"])){
+            $additionals = formatObject($_POST["additionals"]);
+            $additionalResult = createAdditionals($id_person ,$additionals);
+            array_push($result, $additionalResult);
+        } else {
+            array_push($result, null);
+        }
     }
     
-    if(!empty($_POST["experiences"])){
-        $experiences = formatObject($_POST["experiences"]);
-        $experiencesResult = createExperiences($id_person ,$experiences);
-        array_push($result, $experiencesResult);
-    } else {
-        array_push($result, null);
-    }
-    
-    if(!empty($_POST["courses"])){
-        $courses = formatObject($_POST["courses"]);
-        $coursesResult = createCourses($id_person ,$courses);
-        array_push($result, $coursesResult);
-    } else {
-        array_push($result, null);
-    }
-    
-    if(!empty($_POST["additionals"])){
-        $additionals = formatObject($_POST["additionals"]);
-        $additionalResult = createAdditionals($id_person ,$additionals);
-        array_push($result, $additionalResult);
-    } else {
-        array_push($result, null);
-    }
-    
-    echo json_encode($additionals);
+    echo json_encode($result);
+} else if($_GET) {
+    createCv();
 }

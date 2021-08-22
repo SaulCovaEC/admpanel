@@ -4,6 +4,14 @@ import { api as api } from './variables.js';
     let toogleSideMenu = d.getElementById("btn-toogle-menu");
     let sideMenu = d.getElementById("side-menu");
     let logout = d.getElementById("btn-logout");
+    let menuItem = d.getElementsByClassName("menu-link");
+    let currentPage = window.location;
+
+    for(let i = 0; i < menuItem.length; i++){
+        if(menuItem[i].getAttribute('href') == currentPage) {
+            menuItem[i].setAttribute('class', 'menu-link active');
+        }
+    }
 
     toogleSideMenu.addEventListener("click", function() {
         let status = sideMenu.getAttribute("class");

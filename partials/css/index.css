@@ -75,6 +75,55 @@ table.table-cv .table-icon-cell[data-status='true'] {
     pointer-events: none;
 }
 
+.header-group * {
+    margin: 0 5px;
+}
+
+.header-group {
+    display: inline-flex;
+}
+
+fieldset {
+    border: unset;
+    display: list-item;
+    padding: 10px 0px;
+    margin: 0;
+}
+
+div#position-container {
+    background: #fff;
+    position: absolute;
+    top: 145px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 17px;
+}
+
+.filter-container button {
+    margin: auto;
+    padding: 7px 15px;
+}
+
+#position-options {
+    overflow-y: scroll;
+    height: 175px;
+}
+
+#position-select {
+    border: unset;
+    margin: 5px;
+    background-color: #fff;
+}
+
+#position-options, #position-options .checkbox-group{
+    margin: 5px;
+}
+
+.filter-container button {
+    margin: 5px 10px;
+    padding: 7px 15px;
+}
+
 div#pages {
     margin: 15px 0px;
     float: right;
@@ -145,7 +194,7 @@ button.page-btn {
 .btn:hover {
     color: var(--main-color-blue);
     background-color: #fff;
-    border-color: var(--main-color-blue);
+    border: 1px solid var(--main-color-blue);
     cursor: pointer;
 }
 
@@ -155,8 +204,10 @@ button.page-btn {
     font-weight: bold;
     background-color: var(--main-color-blue);
     color: #fff;
+    border-width: 1px;
     border-radius: 10px;
     border-color: #fff;
+    text-decoration: none;
 }
 
 .form-group label {

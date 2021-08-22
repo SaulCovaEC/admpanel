@@ -195,7 +195,7 @@ function getCv($id) {
 $cvPerson = getCv($_POST['id']);
 
 $pdf = new PDF();
-
+    
 $title = $cvPerson->name;
 $pdf->SetTitle($title);
 $pdf->SetAuthor('Fundação Hermanitos');

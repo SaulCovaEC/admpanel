@@ -5,9 +5,24 @@
         <label for="s-name">Nombre</label>
         <input type="text" name="s-name" id="s-name"/>
       </div>
+      <div class="filter-group">
+        <p id="position-numbers" class="hide"></p>
+        <input type="text" name="s-position" id="s-position" class="hide" disabled></input>
+        <button role='button' id="filter-position" class="btn">Posicion</button>
+        <div id='position-container' class="filter-container hide">
+          <fieldset>
+            <legend>
+              <input type="text" name="f-position" id="f-position"/>
+            </legend>
+            <div id="position-options">
+            </div>
+            <button role='button' id="delete-filter-selection" class="btn">Limpiar</button>
+          </fieldset>
+        </div>
+      </div>
     </div>
     <div class="header-group">
-      <button type="button" id="btn-new-cv" class="btn">Crear nuevo curriculo</button>
+      <a type="button" id="btn-new-cv" class="btn" href="<?php echo host();?>/create-cv" target="_self">Crear nuevo curriculo</a>
     </div>
   </div>
 
