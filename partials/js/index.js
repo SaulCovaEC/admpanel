@@ -204,9 +204,8 @@ import { template as template } from './template.js'
     }
   }
 
-  function filterPosition(position) {
+  function loadAllPosition() {
     let formData = new FormData();
-    formData.append("position", position);
     formData.append("limit", 10);
     formData.append("page", 1);
       
@@ -250,10 +249,10 @@ import { template as template } from './template.js'
     
     if(nSelection > 0) {
       positionNumber.innerText = ''
-      positionNumber.setAttribute('class', '')
+      //positionNumber.setAttribute('class', '')
       positionNumber.innerText = nSelection+' seleccionados'
     } else {
-      positionNumber.setAttribute('class', 'hide')
+      //positionNumber.setAttribute('class', 'hide')
       positionNumber.innerText = ''
     }
     selectionInput.setAttribute('value', finalSelection)
@@ -400,9 +399,7 @@ function closeModal() {
 }
 
 function hideFilterPosition() {
-  positionFilterContainer.setAttribute('class', 'filter-container hide')
-  positionFilter.innerHTML = '';
-  inputPosition.setAttribute('value', '')
+  positionFilterContainer.setAttribute('class', 'filter-container hide');
 }
 
   /*----- Triggers -----*/
@@ -473,13 +470,13 @@ if(addAdditionalBtn){
 }
 
 if(openPositionFilter){
+  loadAllPosition();
   openPositionFilter.addEventListener("click", () => {
     let status = positionFilterContainer.getAttribute('class');
     if(status === 'filter-container') {
       hideFilterPosition();
     } else {
       positionFilterContainer.setAttribute('class', 'filter-container')
-      filterPosition('');
       inputPosition.addEventListener('input', function() {
         let optionsCheckbox = d.querySelectorAll('input[type=checkbox][name=s-position]');
         optionsCheckbox.forEach(function(checkbox) {
@@ -498,7 +495,8 @@ if(openPositionFilter){
         optionsCheckbox.forEach(function(checkbox) {
           checkbox.checked = false;
         })
-        selectionInput.value = ''
+        updateFilterPosition();
+        selectionInput.setAttribute('value', '')
         filterCv(1);
       })
     }
