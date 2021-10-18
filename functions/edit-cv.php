@@ -28,12 +28,12 @@ function createPerson() {
     $time_residence = $_POST["time_residence"];
     $gender = $_POST["gender"];
     $civil_status = $_POST["civil_status"];
-    $adress = $_POST["adress"];
+    $address = $_POST["address"];
     $date_of_birth = $_POST["year"]."-".(($_POST["month"] < 10) ? "0".$_POST["month"] : $_POST["month"])."-".$_POST["day"];
     $telephone = $_POST["telephone"];
     $email = $_POST["email"];
     $objetive = (empty($_POST["objetive"])) ? "Inserção do mercado de trabalho" : $_POST["objetive"];
-    $sql = "INSERT INTO person (name, nationality, time_residence, gender, civil_status, adress, date_of_birth, telephone, email, objective) VALUES ('".$name."', '".$nacionality."', '".$time_residence."', '".$gender."','".$civil_status."', '".$adress."', '".$date_of_birth."', '".$telephone."', '".$email."', '".$objetive."')";
+    $sql = "INSERT INTO person (name, nationality, time_residence, gender, civil_status, address, date_of_birth, telephone, email, objective) VALUES ('".$name."', '".$nacionality."', '".$time_residence."', '".$gender."','".$civil_status."', '".$address."', '".$date_of_birth."', '".$telephone."', '".$email."', '".$objetive."')";
 
     mysqli_query($GLOBALS['conn'], $sql);
     return mysqli_insert_id($GLOBALS['conn']);

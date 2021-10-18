@@ -1,5 +1,36 @@
 import { langEs as langEs, langPt as langPt, langEn as langEn } from './var-lang.js';
 
+function updateStringLang() {
+  let lang = (localStorage.getItem('lang') === "") ? (window.navigator.language.substr(0, 2)) : localStorage.getItem('lang');
+  let labels = document.getElementsByClassName("lang-str");
+  
+  for(let i = 0; i < labels.length; i++){
+    let stringSecction = labels[i].getAttribute("data-section");
+    if(lang == "es" || lang == "ES") {
+      labels[i].innerHTML = langEs[stringSecction];
+    } else if(lang == "en" || lang == "EN") {
+      labels[i].innerHTML = langEn[stringSecction];
+    } else {
+      labels[i].innerHTML = langPt[stringSecction];
+    }
+  }
+
+  let placeholders = document.getElementsByClassName("input-form");
+  for(let i = 0; i < placeholders.length; i++){
+    let currentInput = placeholders[i]
+    if(currentInput.nodeName == 'INPUT' || currentInput.nodeName == 'TEXTAREA') {
+      let stringPlaceholder = currentInput.getAttribute("name");
+      if(lang == "es" || lang == "ES") {
+        currentInput.setAttribute('placeholder', langEs[stringPlaceholder]);
+      } else if(lang == "en" || lang == "EN") {
+        currentInput.setAttribute('placeholder', langEn[stringPlaceholder]);
+      } else {
+        currentInput.setAttribute('placeholder', langPt[stringPlaceholder]);
+      }
+    }
+  }
+}
+
 ((d, c) => {
   let currentLang = (localStorage.getItem('lang') === "") ? (window.navigator.language.substr(0, 2)) : localStorage.getItem('lang');
   let langSelect = d.getElementsByClassName("lang-select");
@@ -10,53 +41,13 @@ import { langEs as langEs, langPt as langPt, langEn as langEn } from './var-lang
   let addAdditionalBtn = d.getElementById("add-additional");
 
   if(currentLang == "es" || currentLang == "ES") {
-    loadStringLang('es');
+    updateStringLang('es');
   } else if (currentLang == "en" || currentLang == "EN") {
-    loadStringLang('en');
+    updateStringLang('en');
   } else {
-    loadStringLang('pt');
+    updateStringLang('pt');
   }
 
-  function loadStringLang(lang) {
-    let labels = d.getElementsByClassName("lang-str");
-    for(let i = 0; i < labels.length; i++){
-      let stringSecction = labels[i].getAttribute("data-section");
-      if(lang == "es" || lang == "ES") {
-        labels[i].innerHTML = langEs[stringSecction];
-      } else if(lang == "en" || lang == "EN") {
-        labels[i].innerHTML = langEn[stringSecction];
-      } else {
-        labels[i].innerHTML = langPt[stringSecction];
-      }
-    }
-
-    let validations = d.getElementsByClassName("input-form");
-    for(let i = 0; i < validations.length; i++){
-      let stringValidation = validations[i].getAttribute("data-validation");
-      if(lang == "es" || lang == "ES") {
-        validations[i].setCustomValidity(langEs[stringValidation]);
-      } else if(lang == "en" || lang == "EN") {
-        validations[i].setCustomValidity(langEn[stringValidation]);
-      } else {
-        validations[i].setCustomValidity(langPt[stringValidation]);
-      }
-    }
-
-    let placeholders = d.getElementsByClassName("input-form");
-    for(let i = 0; i < placeholders.length; i++){
-      let currentInput = placeholders[i]
-      if(currentInput.nodeName == 'INPUT' || currentInput.nodeName == 'TEXTAREA') {
-        let stringPlaceholder = currentInput.getAttribute("name");
-        if(lang == "es" || lang == "ES") {
-          currentInput.setAttribute('placeholder', langEs[stringPlaceholder]);
-        } else if(lang == "en" || lang == "EN") {
-          currentInput.setAttribute('placeholder', langEn[stringPlaceholder]);
-        } else {
-          currentInput.setAttribute('placeholder', langPt[stringPlaceholder]);
-        }
-      }
-    }
-  }
 
   function selectCurrent() {
     for(let i = 0; i < langSelect.length; i++){
@@ -74,7 +65,7 @@ import { langEs as langEs, langPt as langPt, langEn as langEn } from './var-lang
       
       selectCurrent();
       thisBtn.addEventListener("click", function(){
-        loadStringLang(btnLang);
+        updateStringLang(btnLang);
         localStorage.setItem('lang', btnLang);
         currentLang = btnLang;
         selectCurrent();
@@ -86,28 +77,31 @@ import { langEs as langEs, langPt as langPt, langEn as langEn } from './var-lang
 if(addStudyBtn){
   addStudyBtn.addEventListener("click", function(event){
     event.preventDefault();
-    loadStringLang(currentLang)
+    updateStringLang(currentLang)
   })
 }
 
 if(addCourseBtn){
   addCourseBtn.addEventListener("click", function(event){
     event.preventDefault();
-    loadStringLang(currentLang)
+    updateStringLang(currentLang)
   })
 }
 
 if(addExperienceBtn){
   addExperienceBtn.addEventListener("click", function(event){
     event.preventDefault();
-    loadStringLang(currentLang)
+    updateStringLang(currentLang)
   })
 }
 
 if(addAdditionalBtn){
   addAdditionalBtn.addEventListener("click", function(event){
     event.preventDefault();
-    loadStringLang(currentLang)
+    updateStringLang(currentLang)
   })
 }
+
 })(document, console.log);
+
+export { updateStringLang };

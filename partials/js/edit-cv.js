@@ -4,7 +4,7 @@ import { updateStringLang as updateStringLang } from './lang.js';
 
 ((d, c) => {
 /*----- Variables -----*/
-  
+
 /*----- Functions -----*/
 
 /*----- Triggers -----*/

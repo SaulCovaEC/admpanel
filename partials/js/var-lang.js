@@ -5,6 +5,33 @@ langEs['menu-list-cv'] = 'Lista de currículos';
 langEs['menu-create-cv'] = 'Crear currículo';
 langEs['menu-users'] = 'Administrar usuarios';
 
+langEs['edit-password'] = 'Editar contraseña';
+langEs['new-password'] = 'Nueva contraseña';
+langEs['confirm-password'] = 'Confirmar contraseña';
+langEs['logout'] = 'Salir';
+
+/* -- List Cv -- */
+//Filters
+langEs['name-filter'] = 'Nombre';
+langEs['position-filter-btn'] = 'Posicion';
+langEs['clear-filter-btn'] = 'Limpiar';
+langEs['create-cv-btn'] = 'Crear nuevo currículo';
+
+
+// Table
+langEs['name-table'] = 'Nombre';
+langEs['email-table'] = 'Correo';
+langEs['phone-table'] = 'Teléfono';
+langEs['academic-formation-table'] = 'Formación académica';
+langEs['course-table'] = 'Cursos';
+langEs['job-experience-table'] = 'Experiencia laboral';
+langEs['aditional-table'] = 'Información Adicional';
+langEs['edit-cv-table'] = 'Editar';
+langEs['download-table'] = 'Descargar';
+langEs['table-result-pages'] = 'Resultados por página';
+langEs['table-result'] = 'Resultados';
+langEs['table-result-of'] = 'de'
+
 /* -- Create Cv --- */
 // Labels
 langEs['title-new-cv'] = 'Agregar Curriculo';
@@ -16,8 +43,9 @@ langEs['person-gender'] = 'Género';
 langEs['person-civil-status'] = 'Estado civil';
 langEs['person-time-residence'] = 'Tiempo de residencia';
 langEs['person-phone'] = 'Teléfono';
+langEs['person-phone-2'] = 'Teléfono';
 langEs['person-email'] = 'Correo';
-langEs['person-adress'] = 'Dirección';
+langEs['person-address'] = 'Dirección';
 langEs['academic-formation'] = 'Formación académica';
 langEs['academic-btn'] = 'Agregar estudio';
 langEs['courses'] = 'Cursos';
@@ -28,12 +56,13 @@ langEs['additional'] = 'Información adicional';
 langEs['additional-btn'] = 'Agregar información adicional';
 
 //Placeholder
-langEs['name'] = 'Ingrese su nombre completo';
+langEs['person-name'] = 'Ingrese su nombre completo';
 langEs['nacionality'] = 'Nacionalidad';
 langEs['time-residence'] = 'Tiempo de residencia en el país';
 langEs['telephone'] = '(00) 00000 0000';
+langEs['telephone-2'] = '(00) 00000 0000';
 langEs['email'] = 'Correo electronico';
-langEs['adress'] = 'Dirección';
+langEs['address'] = 'Dirección';
 
 langEs['day'] = 'Dia';
 langEs['month'] = 'Mes';
@@ -71,6 +100,32 @@ langPt['menu-list-cv'] = 'Lista de currículos';
 langPt['menu-create-cv'] = 'Criar currículo';
 langPt['menu-users'] = 'Gerenciar usuários';
 
+langPt['edit-password'] = 'Editar senha';
+langPt['new-password'] = 'Nova senha';
+langPt['confirm-password'] = 'Confirmar senha';
+langPt['logout'] = 'Salir';
+
+/* -- List Cv -- */
+//Filters
+langPt['name-filter'] = 'Nome';
+langPt['position-filter-btn'] = 'Cargo';
+langPt['clear-filter-btn'] = 'Limpar';
+langPt['create-cv-btn'] = 'Criar novo currículo';
+
+// Table
+langPt['name-table'] = 'Nome';
+langPt['email-table'] = 'Email';
+langPt['phone-table'] = 'Telefone';
+langPt['academic-formation-table'] = 'Formação acadêmica';
+langPt['course-table'] = 'Cursos';
+langPt['job-experience-table'] = 'Experiência de trabalho';
+langPt['aditional-table'] = 'Informação adicional';
+langPt['edit-cv-table'] = 'Editar';
+langPt['download-table'] = 'Download';
+langPt['table-result-pages'] = 'Resultados por página';
+langPt['table-result'] = 'Resultados';
+langPt['table-result-of'] = 'de'
+
 /* --- Create cv --- */
 // Labels
 langPt['title-new-cv'] = 'Adicionar currículo';
@@ -82,8 +137,9 @@ langPt['person-gender'] = 'Gênero';
 langPt['person-civil-status'] = 'Estado civil';
 langPt['person-time-residence'] = 'Tempo de residência';
 langPt['person-phone'] = 'Telefone';
+langPt['person-phone-2'] = 'Telefone';
 langPt['person-email'] = 'Email';
-langPt['person-adress'] = 'Endereço';
+langPt['person-address'] = 'Endereço';
 langPt['academic-formation'] = 'Formação acadêmica';
 langPt['academic-btn'] = 'Adicionar estudo';
 langPt['courses'] = 'Cursos';
@@ -94,12 +150,13 @@ langPt['additional'] = 'Informação adicional';
 langPt['additional-btn'] = 'Adicionar informações adicionais';
 
 //Placeholder
-langPt['name'] = 'Insira seu nome completo';
+langPt['person-name'] = 'Insira seu nome completo';
 langPt['nacionality'] = 'Nacionalidade';
 langPt['time-residence'] = 'Tempo de residência no país';
 langPt['telephone'] = '(00) 00000 0000';
+langPt['telephone-2'] = '(00) 00000 0000';
 langPt['email'] = 'Email';
-langPt['adress'] = 'Endereço';
+langPt['address'] = 'Endereço';
 
 langPt['day'] = 'Dia';
 langPt['month'] = 'Mês';
@@ -138,6 +195,33 @@ langEn['menu-list-cv'] = 'Curriculum list';
 langEn['menu-create-cv'] = 'Create resume';
 langEn['menu-users'] = 'Manage users';
 
+langEn['edit-password'] = 'Edit password';
+langEn['new-password'] = 'New password';
+langEn['confirm-password'] = 'Confirm password';
+langEn['logout'] = 'Logout';
+
+/* -- List Cv -- */
+//Filters
+langEn['name-filter'] = 'Name';
+langEn['position-filter-btn'] = 'Position';
+langEn['clear-filter-btn'] = 'Clear';
+langEn['create-cv-btn'] = 'Create new resume';
+
+
+// Table
+langEn['name-table'] = 'Name';
+langEn['email-table'] = 'Email';
+langEn['phone-table'] = 'Phone';
+langEn['academic-formation-table'] = 'Academic education';
+langEn['course-table'] = 'Courses';
+langEn['job-experience-table'] = 'Work experience';
+langEn['aditional-table'] = 'Additional information';
+langEn['edit-cv-table'] = 'Edit';
+langEn['download-table'] = 'Download';
+langEn['table-result-pages'] = 'Results per page';
+langEn['table-result'] = 'Results';
+langEn['table-result-of'] = 'of'
+
 /* --- Create cv --- */
 // Labels
 langEn['title-new-cv'] = 'Add Resume';
@@ -149,8 +233,9 @@ langEn['person-gender'] = 'Gender';
 langEn['person-civil-status'] = 'Civil status';
 langEn['person-time-residence'] = 'Residence time';
 langEn['person-phone'] = 'Phone';
+langEn['person-phone-2'] = 'Phone';
 langEn['person-email'] = 'Email';
-langEn['person-adress'] = 'Address';
+langEn['person-address'] = 'Address';
 langEn['academic-formation'] = 'Academic formation';
 langEn['academic-btn'] = 'Add study';
 langEn['courses'] = 'Courses';
@@ -161,12 +246,13 @@ langEn['additional'] = 'Additional information';
 langEn['additional-btn'] = 'Add additional information';
 
 //Placeholder
-langEn['name'] = 'Enter your full name';
+langEn['person-name'] = 'Enter your full name';
 langEn['nacionality'] = 'Nacionality';
 langEn['time-residence'] = 'Residence time in the country';
 langEn['telephone'] = '(00) 00000 0000';
+langEn['telephone-2'] = '(00) 00000 0000';
 langEn['email'] = 'Email';
-langEn['adress'] = 'Address';
+langEn['address'] = 'Address';
 
 langEn['day'] = 'Day';
 langEn['month'] = 'Month';

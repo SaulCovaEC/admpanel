@@ -129,15 +129,54 @@ function templateCvItem(data) {
   </tr>`;
 }
 
-function templatePages(current, all) {
-let template = `<div id="pages" data-current="${current}">
-  <button class="page-btn${(current == 1) ? " disabled" : ""}" id="prev-page" data-page="${parseInt(current)-1}"><i class="fas fa-chevron-left"></i></button>`
-  
-  for(let i = 0; i < all; i++) {
-    template += `<button class="page-btn${(current == (i+1)) ? " active" : ""}" data-page="${i+1}">${i+1}</button>`;
-  }
+function templatePages(current, all, allResult, limit) {
+  let template = `<div id="pages" data-current="${current}">
+  <button class="page-btn${(current == 1) ? " disabled" : ""}" id="prev-page" data-page="${parseInt(current)-1}"><i class="fas fa-chevron-left"></i></button>`;
+  if(all < 10) {
+    for(let i = 0; i < all; i++) {
+      template += `<button class="page-btn${(current == i+1) ? " active" : ""}" data-page="${i+1}">${i+1}</button>`;
+    }
+  } else {
+    if(current < 8) {
+      for(let i = 0; i < 8; i++) {
+        let nactual = i+1;
+        template += `<button class="page-btn${(current == nactual) ? " active" : ""}" data-page="${nactual}">${nactual}</button>`;
+      }
+      template += `<button class="page-btn disabled">...</button>`;
+      template += `<button class="page-btn${(current == all) ? " active" : ""}" data-page="${all}">${all}</button>`;
+    } else if (current > (all - 8)){
+      template += `<button class="page-btn" data-page="1">1</button>`;
+      template += `<button class="page-btn disabled">...</button>`;
+      for(let i = (all-8); i < all; i++) {
+        let nactual = i+1;
+        template += `<button class="page-btn${(current == nactual) ? " active" : ""}" data-page="${nactual}">${nactual}</button>`;
+      }
+    } else {
+      template += `<button class="page-btn" data-page="1">1</button>`;
+      template += `<button class="page-btn disabled">...</button>`;
+      for(let i = current-3; i < (parseInt(current)+3); i++) {
+        let nactual = i;
+        template += `<button class="page-btn${(current == nactual) ? " active" : ""}" data-page="${nactual}">${nactual}</button>`;
+      }
+      template += `<button class="page-btn disabled">...</button>`;
+      template += `<button class="page-btn${(current == all) ? " active" : ""}" data-page="${all}">${all}</button>`;
+    }
+  } 
 
 template += `<button class="page-btn${(current == all) ? " disabled" : ""}" id="next-page" data-page="${parseInt(current)+1}"><i class="fas fa-chevron-right"></i></button>
+</div>
+<div id="result-count">
+  <div><span class="lang-str" data-section="table-result-pages"></span> 
+    <select id="limit-results" name="limit-results">
+      <option value="10" ${(limit == 10) ? 'selected' : ''}>10</option>
+      <option value="20" ${(limit == 20) ? 'selected' : ''}>20</option>
+      <option value="50" ${(limit == 50) ? 'selected' : ''}>50</option>
+    </select>
+  </div>
+  <p>-</p>
+  <div>
+    <p><span class="lang-str" data-section="table-result"></span> <span id="first-result">${(limit*current)-(limit-1)}</span> - <span id="last-result">${(current == all) ? allResult : limit*current}</span> <span class="lang-str" data-section="table-result-of"></span> <span id="all-results">${allResult}</span></p>
+  </div>
 </div>`;
 
 return template;

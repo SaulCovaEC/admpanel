@@ -27,6 +27,7 @@
 div#section-user {
     display: flex;
     align-items: center;
+    height: 50px;
 }
 
 div#selection-lang {
@@ -63,6 +64,77 @@ div#selection-lang {
 
 .lang-select:hover {
     cursor: pointer;
+}
+
+div#user-options {
+    margin: 0 15px;
+    height: inherit;
+    display: flex;
+    align-content: center;
+}
+
+button#toggle-user-menu {
+    border: unset;
+    background: unset;
+    font-size: 18px;
+    padding: 10px;
+}
+
+button#toggle-user-menu:hover {
+    cursor: pointer;
+    color: var(--main-color-blue);
+}
+
+div#user-menu:after {
+    content: '';
+    background-color: #fff;
+    position: absolute;
+    top: -8px;
+    right: 13px;
+    width: 20px;
+    height: 20px;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+
+button#toggle-user-menu.active {
+    background-color: var(--main-color-blue);
+    color: #fff;
+}
+
+div#user-options {
+    margin: 0 15px;
+}
+
+#user-menu li span {
+    margin-right: 10px;
+}
+
+div#user-menu li {
+    margin: 5px 0;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+div#user-menu li:hover {
+    background-color: var(--main-color-blue);
+    color:#fff;
+    cursor: pointer;
+}
+
+div#user-menu ul {
+    list-style: none;
+    padding: 0 10px;
+}
+
+div#user-menu {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #fff;
+    padding: 0 5px;
+    min-width: 150px;
 }
 
 #section-menu {

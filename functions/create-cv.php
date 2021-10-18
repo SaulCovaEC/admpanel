@@ -23,9 +23,8 @@ function formatObject($string) {
 }
 
 function createPerson() {
-    $name = $_POST["name"];
+    $name = $_POST["person-name"];
     $nacionality = $_POST["nacionality"];
-    $time_residence = $_POST["time_residence"];
     $gender = $_POST["gender"];
     $civil_status = $_POST["civil_status"];
     $adress = $_POST["adress"];
@@ -34,13 +33,14 @@ function createPerson() {
     $email = $_POST["email"];
     $objetive = (empty($_POST["objetive"])) ? "Inserção do mercado de trabalho" : $_POST["objetive"];
     
-    $checkSql = "SELECT COUNT(email) FROM `person` WHERE email = '".$email."'";
+    $checkSql = "SELECT COUNT(email) AS count FROM `person` WHERE email = '".$email."'";
     
     $checkResult = mysqli_query($GLOBALS['conn'], $checkSql);
     
     while ($countResult = mysqli_fetch_object($checkResult)) {
-        if($countResult == 0) {
-            $sql = "INSERT INTO person (name, nationality, time_residence, gender, civil_status, adress, date_of_birth, telephone, email, objective) VALUES ('".$name."', '".$nacionality."', '".$time_residence."', '".$gender."','".$civil_status."', '".$adress."', '".$date_of_birth."', '".$telephone."', '".$email."', '".$objetive."')";
+        $resultCount = $countResult->count;
+        if($resultCount < 1) {
+            $sql = "INSERT INTO person (name, nationality, gender, civil_status, adress, date_of_birth, telephone, email, objective) VALUES ('".$name."', '".$nacionality."', '".$gender."','".$civil_status."', '".$adress."', '".$date_of_birth."', '".$telephone."', '".$email."', '".$objetive."')";
         
             mysqli_query($GLOBALS['conn'], $sql);
             return mysqli_insert_id($GLOBALS['conn']);
@@ -141,6 +141,4 @@ if($_POST) {
     }
     
     echo json_encode($result);
-} else if($_GET) {
-    createCv();
 }

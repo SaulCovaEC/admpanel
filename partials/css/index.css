@@ -126,7 +126,24 @@ div#position-container {
 
 div#pages {
     margin: 15px 0px;
-    float: right;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+div#result-count {
+    display: flex;
+    align-items: center;
+}
+
+div#result-count * {
+    display: flex;
+    margin: 0 5px;
+}
+
+select#limit-results {
+    border: unset;
+    background: #ececec;
 }
 
 button.page-btn.disabled {
@@ -407,6 +424,13 @@ div#modal-header {
     /* For mobile phones: */
     [class*="col-"] {
       width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    div#main-container {
+        width: calc(100% - 50px);
     }
 }
 

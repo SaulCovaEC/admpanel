@@ -1,6 +1,6 @@
-  <div class="main-panel">
+<div class="main-panel">
     <h2 class="lang-str" data-section="title-new-cv"></h2>
-    <form id="cv-form" action="">
+    <form id="cv-form">
       <div class="title-section">
         <p class="lang-str" data-section="information-person"></p>
         <hr/>
@@ -8,18 +8,18 @@
 
       <section id="person-data">
         <div class="form-group col-2-3">
-          <label for="name" class="lang-str" data-section="person-name"></label>
-          <input type="text" id="name" required="required" name="name" class="input-form" data-validation="error-name"/>
+          <label for="person-name" class="lang-str" data-section="person-name"></label>
+          <input type="text" id="person-name" name="person-name" class="input-form"/>
         </div>
 
         
         <div class="form-group col-1-3">
           <label for="date_of_birth" class="lang-str" data-section="person-date"></label>
           <div class="date-container">
-              <select id="day" name="day"class="input-form" required="required">
+              <select id="day" name="day"class="input-form" required>
                 <option value="" disabled selected class="lang-str" data-section="day"></option>
               </select>
-              <select id="month" name="month" class="input-form" required="required">
+              <select id="month" name="month" class="input-form" required>
                 <option value="" disabled selected class="lang-str" data-section="month"></option>
                 <option value="1" class="lang-str" data-section="january"></option>
                 <option value="2" class="lang-str" data-section="february"></option>
@@ -34,21 +34,21 @@
                 <option value="11" class="lang-str" data-section="november"></option>
                 <option value="12" class="lang-str" data-section="december"></option>
               </select>
-              <select id="year" name="year" class="input-form" required="required">
+              <select id="year" name="year" class="input-form" required>
                 <option value="" disabled selected class="lang-str" data-section="year"></option>
               </select>
           </div>
         </div>
 
-        <div class="form-group col-1-3">
+        <div class="form-group col-1-4">
           <label for="nacionality" class="lang-str" data-section="person-nacionality"></label>
-          <input type="text" id="nacionality" required="required" name="nacionality" value="Venezuelano(a)" class="input-form"/>
+          <input type="text" id="nacionality" name="nacionality" value="Venezuelano(a)" data-validation="error-name" class="input-form" required/>
         </div>
       
 
-        <div class="form-group col-1-3">
+        <div class="form-group col-1-4">
           <label for="gender" class="lang-str" data-section="person-gender"></label>
-          <select name="gender" id="gender" class="input-form" required="required">
+          <select name="gender" id="gender" class="input-form" data-validation="error-name" required>
             <option value="" disabled selected class="lang-str" data-section="select-option"></option>
             <option value="M" class="lang-str" data-section="gender-male"></option>
             <option value="F" class="lang-str" data-section="gender-female"></option>
@@ -56,9 +56,9 @@
           </select>
         </div>
       
-        <div class="form-group col-1-3">
+        <div class="form-group col-1-4">
           <label for="civil-status" class="lang-str" data-section="person-civil-status"></label>
-          <select name="civil_status" id="civil-status" required="required" class="input-form">
+          <select name="civil_status" id="civil-status" data-validation="error-name" class="input-form" required>
             <option value="" disabled selected class="lang-str" data-section="select-option"></option>
             <option value="Solteiro(a)" class="lang-str" data-section="single"></option>
             <option value="Casado(a)" class="lang-str" data-section="married"></option>
@@ -66,33 +66,26 @@
             <option value="Viúvo(a)" class="lang-str" data-section="widower"></option>
             <option value="Separado(a)" class="lang-str" data-section="separated"></option>
           </select>
-        </div> 
-      
+        </div>
+
         <div class="form-group col-1-3">
           <label for="email" class="lang-str" data-section="person-email"></label>
-          <input type="email" id="email" required="required" name="email" class="input-form"/>
+          <input type="email" id="email" data-validation="error-name" name="email" class="input-form" required/>
         </div>
       
         <div class="form-group col-1-3">
           <label for="telephone" class="lang-str" data-section="person-phone"></label>
-          <input type="text" id="telephone" required="required" name="telephone" class="input-form"/>
+          <input type="number" id="telephone" data-validation="error-name" name="telephone" class="input-form" required/>
         </div>
 
         <div class="form-group col-1-3">
-          <label for="time-residence" class="lang-str" data-section="person-time-residence"></label>
-          <div class="date-container">
-            <select id="year-residence" name="year-residence" class="input-form" required="required">
-              <option value="" disabled selected class="lang-str" data-section="year"></option>
-            </select>
-            <select id="month-residence" name="month-residence" class="input-form" required="required">
-              <option value="" disabled selected class="lang-str" data-section="month"></option>
-            </select>
-          </div>
+          <label for="telephone-2" class="lang-str" data-section="person-phone-2"></label>
+          <input type="number" id="telephone-2" name="telephone-2" class="input-form"/>
         </div>
 
         <div class="form-group col-1-1">
-          <label for="adress" class="lang-str" data-section="person-adress"></label>
-          <textarea name="adress" id="adress" cols="30" rows="2" required="required" class="input-form"></textarea>
+          <label for="address" class="lang-str" data-section="person-address"></label>
+          <textarea name="address" id="address" cols="30" rows="2" data-validation="error-name" class="input-form" required></textarea>
         </div>
       </section>
 
@@ -141,7 +134,7 @@
       </section>
 
       <div class="form-group col-1-1">
-        <button id="send-cv" class="btn lang-str" data-section="send"></button>
+        <button id="send-cv" class="btn lang-str" type="submit" data-section="send"></button>
       </div>
     </form>
   </div>

@@ -8,7 +8,7 @@ function allCv($limit = 10, $page = 1) {
     $result = array();
     $returnResult = array();
 
-    $personSql = "SELECT * FROM person LIMIT $limit OFFSET $offset";
+    $personSql = "SELECT * FROM person ORDER BY name ASC LIMIT $limit OFFSET $offset";
 
     $personResult = mysqli_query($GLOBALS['conn'], $personSql);
     
@@ -53,16 +53,12 @@ function allCv($limit = 10, $page = 1) {
     $pages = "SELECT id_person FROM person";
     $nPages = mysqli_query($GLOBALS['conn'], $pages);
     $nResults = mysqli_num_rows($nPages);
-    $pResult = ceil($nResults/10);
+    $pResult = ceil($nResults/$limit);
     
-    echo json_encode(array($pResult, $result));
-
-    //echo $personSql;
+    echo json_encode(array($pResult, $nResults, $result));
 }
 
 
 if($_POST) {
     allCv($_POST["limit"], $_POST["page"]);
-} else {
-    allCv(10,2);
 }

@@ -4,21 +4,25 @@ require_once 'dbcnfg.php';
 header("Access-Control-Allow-Origin: *");
 
 function filterCv($name, $position, $limit = 10, $page = 1) {
-    $offset = ($page == 1) ? 0 : ($page*10)-1;
+    $offset = ($page == 1) ? 0 : (($page*10)-10);
     $result = array();
-    $prevSql = "SELECT DISTINCT(person.id_person) FROM person INNER JOIN professional_experience ON person.id_person = professional_experience.id_person WHERE person.name LIKE '%$name%'";
+    $prevSql = "SELECT DISTINCT(person.id_person) FROM person";
 
     if($position != '') {
-        $prevSql .= " AND (";
+        $prevSql .= " INNER JOIN professional_experience ON person.id_person = professional_experience.id_person WHERE person.name LIKE '%$name%' AND (";
         $positionArray = explode("*,*", $position);
     
         for($i = 0; $i < count($positionArray); $i++) {
             $prevSql .= ($i < count($positionArray)-1) ? "professional_experience.position = '".$positionArray[$i]."' OR " : "professional_experience.position = '".$positionArray[$i]."'";
         }
         $prevSql .= ")";
+    } else {
+        $prevSql .= " WHERE person.name LIKE '%$name%'";
     }
 
-    $prevSql .= " LIMIT $limit OFFSET $offset";
+    $allResultSql = $prevSql;
+
+    $prevSql .= "ORDER BY person.name ASC LIMIT $limit OFFSET $offset";
 
     $resultSql = mysqli_query($GLOBALS['conn'], $prevSql);
 
@@ -65,7 +69,11 @@ function filterCv($name, $position, $limit = 10, $page = 1) {
         }
     }
 
-    echo json_encode($result);
+    $allResultCount = mysqli_query($GLOBALS['conn'], $allResultSql);
+    $nResults = mysqli_num_rows($allResultCount);
+    $pResult = ceil($nResults/$limit);
+    
+    echo json_encode(array($pResult, $nResults, $result));
 }
 
 

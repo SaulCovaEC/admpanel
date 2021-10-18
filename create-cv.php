@@ -3,6 +3,7 @@ require_once './functions/config.php';
 session_start();
 
 $host = host();
+$nameFile = fileName();
 $login = $host."/login";
 
 if(isset($_SESSION["id_user"])){

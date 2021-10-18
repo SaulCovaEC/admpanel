@@ -14,8 +14,13 @@ class PDF extends FPDF {
       $this->Image('../img/border.png',0,6,$width, 1);
       // Logo imagen
       $this->Image('../img/logo-cv.png',$iconPosition,12,30);
-      // Line break
-      $this->Ln(2);
+      if($this->PageNo() > 1) {
+        // Line break
+        $this->Ln(14);
+      } else {
+        // Line break
+        $this->Ln(2);
+      }
     }
 
     function Footer(){
@@ -38,7 +43,7 @@ class PDF extends FPDF {
       $this->Cell(0,6,utf8_decode('Nacionalidade: '.$data->nationality." - ".$data->time_residence));
     	$this->Ln();
       // Direction
-      $this->Cell(0,6,utf8_decode('Endereço: '.$data->adress));
+      $this->Cell(0,6,utf8_decode('Endereço: '.$data->address));
     	$this->Ln();
       // Day of birth
       $this->Cell(0,6,'Data de Nascimento: '.$this->formatDate($data->date_of_birth));
@@ -67,8 +72,7 @@ class PDF extends FPDF {
         $this->Ln();
         $this->SetFont('Times','',12);
         for ($i=0; $i < count($data->studies); $i++) { 
-          $this->Cell(0,6,utf8_decode("Ensino ".(($data->studies[$i]->grade_study) ? $data->studies[$i]->grade_study." " : " ").(($data->studies[$i]->status_study) ? $data->studies[$i]->status_study." - " : " - ").(($data->studies[$i]->institution) ? $data->studies[$i]->institution." - " : "").(($data->studies[$i]->college_career) ? $data->studies[$i]->college_career : "")." ".(($data->studies[$i]->grade_study) ? $data->studies[$i]->date_study : "")));
-    	    $this->Ln();
+          $this->MultiCell(0,6,utf8_decode("Ensino ".(($data->studies[$i]->grade_study) ? $data->studies[$i]->grade_study." " : " ").(($data->studies[$i]->status_study) ? $data->studies[$i]->status_study." - " : " - ").(($data->studies[$i]->institution) ? $data->studies[$i]->institution." - " : "").(($data->studies[$i]->college_career) ? $data->studies[$i]->college_career : "")." ".(($data->studies[$i]->grade_study) ? $data->studies[$i]->date_study : "")));
         }
       }
 
@@ -96,9 +100,8 @@ class PDF extends FPDF {
         $this->Cell(0,10,utf8_decode("CURSOS:"),'B');
         $this->Ln();
         $this->SetFont('Times','',12);
-        for ($i=0; $i < count($data->experiences); $i++) { 
-          $this->Cell(0,6,utf8_decode((($data->courses[$i]->title) ? $data->courses[$i]->title : " ").(($data->courses[$i]->institution) ? " - ".$data->courses[$i]->institution : "").(($data->courses[$i]->date) ? " - ".$data->courses[$i]->date : "")));
-    	    $this->Ln();
+        for ($i=0; $i < count($data->courses); $i++) { 
+          $this->MultiCell(0,6,utf8_decode((($data->courses[$i]->title) ? $data->courses[$i]->title : " ").(($data->courses[$i]->institution) ? " - ".$data->courses[$i]->institution : "").(($data->courses[$i]->date) ? " - ".$data->courses[$i]->date : "")));
         }
       }
       
